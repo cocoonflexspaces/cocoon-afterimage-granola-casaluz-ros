@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Production Schedule — Casa Luz / After Image Projects · Nov 18, 2026</title>
+<link rel="icon" href="img/cocoon/mark-128.png">
+<style>
+  :root {
+    --cream:      #F5F2E8;
+    --cream-deep: #ECE7D6;
+    --cream-warm: #EFE9D7;
+    --terracotta: #F54029;
+    --teal:       #275453;
+    --ink:        #1A1A1A;
+    --ink-soft:   #4A4A4A;
+    --rule:       rgba(26,26,26,0.12);
+    --pending-bg: #FFF7ED;
+    --pending-border: #F59E0B;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--ink);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .topbar-mark {
+    height: 28px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+  }
+  .topbar-wordmark {
+    height: 16px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+  }
+  .topbar-sep {
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
+  }
+  .topbar-title {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.02em;
+  }
+  .topbar-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--terracotta);
+    color: white;
+    padding: 48px 40px 40px;
+  }
+.hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 10px;
+  }
+  .hero-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    font-size: 16px;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hero-meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .hero-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* ── LAYOUT ── */
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 48px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--terracotta);
+  }
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ── INFO GRID ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 16px 18px;
+    border: 1px solid var(--rule);
+  }
+  .info-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .info-card-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .info-card-value a {
+    color: var(--terracotta);
+    text-decoration: none;
+  }
+
+  /* ── COMMUNICATION BANNER ── */
+  .comm-banner {
+    background: var(--teal);
+    color: white;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .comm-banner strong {
+    font-weight: 700;
+  }
+
+  /* ── VENDOR BLOCKS ── */
+  .vendor-block {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .vendor-header {
+    background: var(--cream-deep);
+    padding: 12px 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .vendor-name {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .vendor-note {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .vendor-body {
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+  }
+  .vendor-category h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .vendor-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 3px 0;
+    color: var(--ink);
+  }
+  .vendor-item-qty {
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .vendor-logistics {
+    padding: 12px 20px;
+    background: var(--cream);
+    border-top: 1px solid var(--rule);
+    font-size: 12px;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .vendor-logistics span strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ── DAY BLOCK ── */
+  .day-block {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .day-header {
+    background: var(--ink);
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .day-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .day-hours {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 400;
+  }
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .schedule-table tr {
+    border-bottom: 1px solid var(--rule);
+  }
+  .schedule-table tr:last-child {
+    border-bottom: none;
+  }
+  .schedule-table tr:hover {
+    background: var(--cream);
+  }
+  .schedule-table td {
+    padding: 10px 20px;
+    vertical-align: top;
+    font-size: 13px;
+  }
+  .schedule-table td.time {
+    width: 130px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .schedule-table td.item {
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .schedule-table tr.highlight td.time {
+    color: var(--terracotta);
+    font-weight: 700;
+  }
+  .schedule-table tr.cm-row td.time {
+    color: var(--teal);
+    font-weight: 700;
+  }
+  .schedule-table tr.cm-row td.item {
+    color: var(--teal);
+    font-weight: 500;
+  }
+
+  /* Pending rows */
+  .schedule-table tr.pending-row td {
+    background: var(--pending-bg);
+  }
+  .pending-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--pending-border);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-bottom: 3px;
+  }
+  .pending-text {
+    font-size: 13px;
+    color: #92400E;
+    line-height: 1.4;
+  }
+
+  /* Sub-items (snacks, menus) */
+  .sub-items {
+    margin-top: 4px;
+    padding-left: 12px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .sub-items li {
+    list-style: none;
+  }
+  .sub-items li::before {
+    content: "· ";
+    color: var(--terracotta);
+  }
+
+  /* ── SETUP NOTES ── */
+  .notes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .notes-card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .notes-card h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .notes-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .notes-card ul li {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.45;
+    padding-left: 14px;
+    position: relative;
+  }
+  .notes-card ul li::before {
+    content: "•";
+    color: var(--terracotta);
+    position: absolute;
+    left: 0;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  /* ── OPEN ITEMS ── */
+  .open-items {
+    background: var(--pending-bg);
+    border: 1px solid var(--pending-border);
+    border-radius: 10px;
+    padding: 20px 24px;
+  }
+  .open-items h4 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #92400E;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .open-items ol {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .open-items ol li {
+    font-size: 13px;
+    color: #78350F;
+    line-height: 1.45;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 20px 40px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer strong {
+    color: white;
+  }
+
+  @media print {
+    .topbar { position: static; }
+    .day-block, .vendor-block, .notes-card { break-inside: avoid; }
+  }
+</style>
+<style>
+  .talent-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap:10px; }
+  .talent-chip { background:white; border:1px solid var(--rule); border-radius:8px; padding:10px 14px; }
+  .talent-chip .t { font-weight:700; color:var(--terracotta); font-size:13px; }
+  .talent-chip .n { font-size:12px; color:var(--ink-soft); }
+  .shots { font-size:12px; color:var(--ink-soft); margin-top:2px; }
+  .flag { display:inline-block; background:var(--pending-border); color:white; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:1px 6px; border-radius:4px; margin-right:6px; vertical-align:1px; }
+  @media (max-width: 640px) {
+    .topbar, .hero, .main, .footer { padding-left:20px; padding-right:20px; }
+    .notes-grid { grid-template-columns: 1fr; }
+    .schedule-table td.time { width: 96px; padding-right: 8px; }
+    .schedule-table td { padding: 10px 12px; }
+    .topbar-meta { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-brand">
+      <img class="topbar-mark" src="img/cocoon/mark-128.png" alt="">
+      <img class="topbar-wordmark" src="img/cocoon/wordmark-320.png" alt="Cocoon">
+    </div>
+    <span class="topbar-sep">×</span>
+    <span class="topbar-title">Production Schedule</span>
+  </div>
+  <span class="topbar-meta">Booking COS-33655 · Wed, Nov 18, 2026</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Production Schedule · Casa Luz</div>
+  <div class="hero-title">After Image Projects<br>“Granola” Commercial Shoot</div>
+  <div class="hero-sub">Casa Luz · 45 Howard St · 3rd Floor Only</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Date</span>
+      <span class="hero-meta-value">Wednesday, Nov 18, 2026</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Contracted Hours</span>
+      <span class="hero-meta-value">8:00 AM – 8:00 PM</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Headcount</span>
+      <span class="hero-meta-value">24 contracted · 25–30 expected</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Booking</span>
+      <span class="hero-meta-value">COS-33655 · Zendesk #64514</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Casa Manager</span>
+      <span class="hero-meta-value">Randa · 7:00 AM – 9:00 PM</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Cocoon POC</span>
+      <span class="hero-meta-value">Eduard Monteagudo · (917) 214-7307</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- COMMUNICATION -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">📱</span>
+      <span class="section-title">Day-of Contacts</span>
+    </div>
+    <div class="comm-banner">
+      Randa will start a <strong>group text with the production team + Cocoon Ops</strong> on the morning of the shoot for day-of coordination.
+      <br><br>
+      <strong>Rodney Byerson</strong> · Producer · 646-586-2629<br>
+      <strong>Rafael Rivera</strong> · Producer · 347-824-3479<br>
+      <strong>Kalyn Byerson</strong> · Production Supervisor · 347-902-0746<br>
+      <strong>Eduard Monteagudo</strong> · Cocoon Operations · (917) 214-7307
+    </div>
+  </div>
+
+  <!-- KEY TIMES -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">⏱</span>
+      <span class="section-title">Key Times</span>
+    </div>
+    <div class="info-grid">
+      <div class="info-card"><div class="info-card-label">Space Access / Check-In</div><div class="info-card-value">8:00 AM — no earlier</div></div>
+      <div class="info-card"><div class="info-card-label">Production, Art &amp; Crew Call</div><div class="info-card-value">8:00 AM</div></div>
+      <div class="info-card"><div class="info-card-label">Shooting Window</div><div class="info-card-value">10:30 AM – 6:37 PM</div></div>
+      <div class="info-card"><div class="info-card-label">Crew Lunch</div><div class="info-card-value">2:00 – 2:30 PM</div></div>
+      <div class="info-card"><div class="info-card-label">Wrap / Load-Out</div><div class="info-card-value">6:37 – 8:00 PM</div></div>
+    </div>
+  </div>
+
+  <!-- EQUIPMENT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">🎥</span>
+      <span class="section-title">Equipment Coming On Site</span>
+    </div>
+
+    <div class="vendor-block">
+      <div class="vendor-header">
+        <span class="vendor-name">Tracking Shot, LLC</span>
+        <span class="vendor-note">Dolly package · rented by production</span>
+      </div>
+      <div class="vendor-body">
+        <div class="vendor-category">
+          <h4>Dolly</h4>
+          <div class="vendor-item"><span>Fisher 11 Dolly</span><span class="vendor-item-qty">×1</span></div>
+          <div class="vendor-item"><span>Fisher Skateboard Wheels</span><span class="vendor-item-qty">×1</span></div>
+          <div class="vendor-item"><span>24" Riser</span><span class="vendor-item-qty">×1</span></div>
+          <div class="vendor-item"><span>4' Slider</span><span class="vendor-item-qty">×1</span></div>
+        </div>
+        <div class="vendor-category">
+          <h4>Track</h4>
+          <div class="vendor-item"><span>Starter Track</span><span class="vendor-item-qty">×1</span></div>
+          <div class="vendor-item"><span>8' Track</span><span class="vendor-item-qty">×1</span></div>
+          <div class="vendor-item"><span>4' Track</span><span class="vendor-item-qty">×2</span></div>
+          <div class="vendor-item"><span>2' Track</span><span class="vendor-item-qty">×1</span></div>
+          <div class="vendor-item"><span>45° Track</span><span class="vendor-item-qty">×2</span></div>
+          <div class="vendor-item"><span>Wedges</span><span class="vendor-item-qty">×1 set</span></div>
+        </div>
+        <div class="vendor-category">
+          <h4>Also Expected</h4>
+          <div class="vendor-item"><span>Camera package</span></div>
+          <div class="vendor-item"><span>Grip &amp; electric (G&amp;E)</span></div>
+          <div class="vendor-item"><span>Art department set dressing</span></div>
+          <div class="vendor-item" style="color:var(--ink-soft);font-size:12px"><span>~1 ton total, loaded from production truck</span></div>
+        </div>
+      </div>
+      <div class="vendor-logistics">
+        <span><strong>Floor protection:</strong> required under all dolly track and heavy stands</span>
+        <span><strong>Sound:</strong> production is recording sound</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOAD-IN -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">🚚</span>
+      <span class="section-title">Elevator / Load-In Order</span>
+    </div>
+    <div class="day-block">
+      <table class="schedule-table">
+        <tr>
+          <td class="time">8:00–8:15 AM</td>
+          <td class="item"><strong>Art</strong> — set dressing load-in (access opens at 8:00 AM)</td>
+        </tr>
+        <tr>
+          <td class="time">8:15–9:00 AM</td>
+          <td class="item"><strong>G&amp;E</strong> — grip &amp; electric load-in</td>
+        </tr>
+        <tr>
+          <td class="time">9:00–9:15 AM</td>
+          <td class="item"><strong>Camera</strong> — camera &amp; dolly package load-in</td>
+        </tr>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--ink-soft);margin-top:-12px">Casa Luz has a passenger elevator (no freight elevator). Load in department by department, and protect the elevator, lobby, walls and floors.</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">Shoot Day</span>
+      <span class="section-title">Wednesday, November 18</span>
+    </div>
+    <div class="day-block">
+      <div class="day-header">
+        <span class="day-label">Wednesday, Nov 18, 2026</span>
+        <span class="day-hours">Contracted 8:00 AM – 8:00 PM · 12 hours</span>
+      </div>
+      <table class="schedule-table">
+        <tr class="cm-row">
+          <td class="time">7:00 AM</td>
+          <td class="item">Randa (Casa Manager) arrives — opens the space, films the full 3rd floor and furniture as the reset reference</td>
+        </tr>
+        <tr class="highlight">
+          <td class="time">8:00 AM</td>
+          <td class="item"><strong>Check-in — space access opens</strong> · Production, art &amp; general crew call<div class="shots">No access before 8:00 AM</div></td>
+        </tr>
+        <tr>
+          <td class="time">8:00–10:30 AM</td>
+          <td class="item">Crew prep — lighting, art, wardrobe and camera prep<div class="shots">Art load-in 8:00–8:15 · G&amp;E load-in 8:15–9:00 · Camera load-in 9:00–9:15</div></td>
+        </tr>
+        <tr>
+          <td class="time">9:00 AM</td>
+          <td class="item">First talent call (3)</td>
+        </tr>
+        <tr class="highlight">
+          <td class="time">10:30 AM</td>
+          <td class="item"><strong>Camera rolls</strong> — Scene 2: “Julie morning” (office)<div class="shots">Shots 2B · 2C · 2A · 2J · 2K · 2L · 2E · 2F · 2H · 2M · 2N · 2P — dialogue, screen inserts, slight lateral track</div></td>
+        </tr>
+        <tr>
+          <td class="time">12:15–1:30 PM</td>
+          <td class="item">Scene 7: “Key Emoji” pt 1 — ensemble with background talent<div class="shots">Shots 7B · 7C · 7D · 7L · 7M · 7G — high-angle inserts, seating revisions</div></td>
+        </tr>
+        <tr>
+          <td class="time">1:30–1:45 PM</td>
+          <td class="item">Reset — product insert setup</td>
+        </tr>
+        <tr>
+          <td class="time">1:45–2:00 PM</td>
+          <td class="item">Granola product insert (2D) — product bowl on white background</td>
+        </tr>
+        <tr class="highlight">
+          <td class="time">2:00–2:30 PM</td>
+          <td class="item">🍽 Crew lunch</td>
+        </tr>
+        <tr>
+          <td class="time">2:30–4:00 PM</td>
+          <td class="item">Scene 7: “Key Emoji” pt 2<div class="shots">Shots 7N · 7K · 7F · 7J (optional dolly) · 7E · 7A · 7I</div></td>
+        </tr>
+        <tr>
+          <td class="time">4:00–4:08 PM</td>
+          <td class="item">Scene 11: Coworkers wide (11C)</td>
+        </tr>
+        <tr>
+          <td class="time">4:08–4:53 PM</td>
+          <td class="item">“Karl” portrait (2G) on throne, black background · overhead top-down on rug (2O)</td>
+        </tr>
+        <tr>
+          <td class="time">4:53–5:45 PM</td>
+          <td class="item">Art redress — office party look (from 5:15 PM) · bright-office match prep</td>
+        </tr>
+        <tr>
+          <td class="time">5:45–6:37 PM</td>
+          <td class="item">Scene 11: Bright office / office party<div class="shots">Shots 11EA · 11F (dark office, white wardrobe) · 11G (photographer flash)</div></td>
+        </tr>
+        <tr class="highlight">
+          <td class="time">6:37 PM</td>
+          <td class="item"><strong>Camera wrap</strong> — strike &amp; load-out begins</td>
+        </tr>
+        <tr class="highlight">
+          <td class="time">8:00 PM</td>
+          <td class="item"><strong>Check-out</strong> — all crew &amp; gear out, space reset to reference</td>
+        </tr>
+        <tr class="cm-row">
+          <td class="time">9:00 PM</td>
+          <td class="item">Randa departs after post-check-out protocol</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- TALENT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">🎭</span>
+      <span class="section-title">Talent Arrivals (18 total)</span>
+    </div>
+    <div class="talent-grid">
+      <div class="talent-chip"><div class="t">9:00 AM</div><div class="n">3 talent</div></div>
+      <div class="talent-chip"><div class="t">10:00 AM</div><div class="n">1 talent</div></div>
+      <div class="talent-chip"><div class="t">10:30 AM</div><div class="n">1 talent</div></div>
+      <div class="talent-chip"><div class="t">11:00 AM</div><div class="n">6 talent (incl. 4 background)</div></div>
+      <div class="talent-chip"><div class="t">2:00 PM</div><div class="n">1 talent</div></div>
+      <div class="talent-chip"><div class="t">2:30 PM</div><div class="n">2 talent</div></div>
+      <div class="talent-chip"><div class="t">3:00 PM</div><div class="n">1 talent</div></div>
+      <div class="talent-chip"><div class="t">4:30 PM</div><div class="n">1 talent</div></div>
+      <div class="talent-chip"><div class="t">5:00 PM</div><div class="n">1 talent</div></div>
+      <div class="talent-chip"><div class="t">TBD</div><div class="n">1 talent</div></div>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">📋</span>
+      <span class="section-title">Space Notes</span>
+    </div>
+    <div class="notes-grid">
+      <div class="notes-card">
+        <h4>Space &amp; Access</h4>
+        <ul>
+          <li>Booking covers the <strong>3rd floor only</strong> — no holding, catering or gear on other floors</li>
+          <li>Passenger elevator only — load in department by department</li>
+          <li>Existing 3rd-floor furniture is used on set; any furniture moved is photographed before and reset exactly</li>
+          <li>Artwork may not be featured or moved without Cocoon clearance</li>
+        </ul>
+      </div>
+      <div class="notes-card">
+        <h4>Protection &amp; Wrap</h4>
+        <ul>
+          <li>Floor protection under all dolly track, stands and carts</li>
+          <li>Lighting redress for the “dark office” party look — no tape or rigging on walls or ceilings without approval</li>
+          <li>Trash &amp; recycling: up to 6 bags included; additional bags billed</li>
+          <li>Wrap: space returned to its reference condition by 8:00 PM</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPEN ITEMS -->
+  <div class="section">
+    <div class="open-items">
+      <h4>⏳ Open Items</h4>
+      <ol>
+        <li><strong>Welcome Kit:</strong> the signed copy received is for a different property — the Casa Luz Welcome Kit still needs to be signed.</li>
+        <li><strong>Final headcount:</strong> crew + talent on site at peak to be confirmed (24 contracted).</li>
+        <li><strong>On-set point of contact:</strong> name and cell to be confirmed.</li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span><strong>Cocoon Flex Spaces</strong> · Casa Luz · 45 Howard St, New York, NY 10013</span>
+  <span>Production schedule based on the client’s Day 2 working schedule · Updated Nov 17, 2026</span>
+</div>
+
+</body>
+</html>
